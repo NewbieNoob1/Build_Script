@@ -95,7 +95,7 @@ sed -i 's/android:minSdkVersion="19"/android:minSdkVersion="21"/' prebuilts/sdk/
 #3. XiaomiVibrator Feature
 cd frameworks/native
 git fetch https://github.com/VoidUI-Tiramisu/frameworks_native refs/heads/aosp-13 && git cherry-pick d3b4026058e9d44759860c0b69d35de3f801c4e1
-cd../../
+cd ../..
 
 echo "========================================================================"
 echo "MODIFICATIONS DONE SUCCESSFULLY"
