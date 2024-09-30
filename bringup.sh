@@ -40,6 +40,7 @@ cd clang-neutron
 curl -LO "https://raw.githubusercontent.com/Neutron-Toolchains/antman/main/antman"
 chmod +x antman
 ./antman -S=05012024
+./antman --patch=glibc
 cd ../../../../..
 
 echo "========================================================================"
