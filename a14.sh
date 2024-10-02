@@ -47,7 +47,7 @@ echo "========================================================================"
 git clone https://github.com/DeadlyShroud/device_xiaomi_munch.git --depth=1 -b fourteen device/xiaomi/munch
 
 #2. Common Device Tree
-git clone https://github.com/DeadlyShroud/device_xiaomi_sm8250-common.git --depth=1 -b fourteen device/xiaomi/sm8250-common
+git clone https://github.com/NewbieNoob1/device_xiaomi_sm8250-common.git --depth=1 -b fourteen device/xiaomi/sm8250-common
 
 #3. Vendor Tree
 git clone https://gitea.com/deadlyshroud/vendor_xiaomi_munch.git --depth=1 -b fourteen vendor/xiaomi/munch
