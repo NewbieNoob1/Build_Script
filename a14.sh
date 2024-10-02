@@ -47,7 +47,7 @@ echo "========================================================================"
 git clone https://github.com/DeadlyShroud/device_xiaomi_munch.git --depth=1 -b fourteen device/xiaomi/munch
 
 #2. Common Device Tree
-git clone https://github.com/DeadlyShroud/device_xiaomi_sm8250-common.git --depth=1 -b fourteen device/xiaomi/sm8250-common
+git clone https://github.com/NewbieNoob1/device_xiaomi_sm8250-common.git --depth=1 -b fourteen device/xiaomi/sm8250-common
 
 #3. Vendor Tree
 git clone https://gitea.com/deadlyshroud/vendor_xiaomi_munch.git --depth=1 -b fourteen vendor/xiaomi/munch
@@ -97,16 +97,6 @@ echo "========================================================================"
 echo "========================================================================"
 echo "MODIFICATIONS STARTED"
 echo "========================================================================"
-
-#1. Neutron Clang
-cd prebuilts/clang/host/linux-x86
-mkdir clang-neutron
-cd clang-neutron
-curl -LO "https://raw.githubusercontent.com/Neutron-Toolchains/antman/main/antman"
-chmod +x antman
-./antman -S=05012024
-./antman --patch=glibc
-cd ../../../../..
 
 #2. Pocket Mode
 sed -i 's/android:minSdkVersion="19"/android:minSdkVersion="21"/' prebuilts/sdk/current/androidx/m2repository/androidx/preference/preference/1.3.0-alpha01/manifest/AndroidManifest.xml
