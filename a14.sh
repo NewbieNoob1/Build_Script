@@ -27,17 +27,6 @@ echo "========================================================================"
 echo "ROM REPOSITORY INITIALIZED SUCCESSFULLY"
 echo "========================================================================"
 
-#Resync Source
-echo "========================================================================"
-echo "RESYNCING SOURCE"
-echo "========================================================================"
-
-/opt/crave/resync.sh
-
-echo "========================================================================"
-echo "RESYNCED SOURCE SUCCESSFULLY"
-echo "========================================================================"
-
 #Clone Resources
 echo "========================================================================"
 echo "CLONING BASIC MUNCH RESOURCES"
@@ -45,16 +34,12 @@ echo "========================================================================"
 
 #1. Device Tree
 git clone https://github.com/DeadlyShroud/device_xiaomi_munch.git --depth=1 -b fourteen device/xiaomi/munch
-
 #2. Common Device Tree
-git clone https://github.com/NewbieNoob1/device_xiaomi_sm8250-common.git --depth=1 -b fourteen device/xiaomi/sm8250-common
-
+git clone https://github.com/DeadlyShroud/device_xiaomi_sm8250-common.git --depth=1 -b fourteen device/xiaomi/sm8250-common
 #3. Vendor Tree
 git clone https://gitea.com/deadlyshroud/vendor_xiaomi_munch.git --depth=1 -b fourteen vendor/xiaomi/munch
-
 #4. Common Vendor Tree
 git clone https://gitea.com/deadlyshroud/vendor_xiaomi_sm8250-common.git --depth=1 -b fourteen vendor/xiaomi/sm8250-common
-
 #5. Kernel Tree
 git clone https://github.com/kvsnr113/xiaomi_sm8250_kernel.git --depth=1 -b main kernel/xiaomi/sm8250
 
@@ -89,9 +74,6 @@ git clone https://github.com/yaap/packages_apps_KProfiles.git --depth=1 -b fourt
 rm -rf prebuilts/clang/host/linux-x86/clang-r522817
 git clone -b 14.0 https://gitlab.com/crdroidandroid/android_prebuilts_clang_host_linux-x86_clang-r522817.git prebuilts/clang/host/linux-x86/clang-r522817
 
-#7. Neutron Clang
-git clone https://gitea.com/Bhairav/prebuilts_clang_host_linux-x86_clang-neutron.git -b main prebuilts/clang/host/linux-x86/clang-neutron
-
 echo "========================================================================"
 echo "EXTRA STUFF CLONED SUCCESSFULLY"
 echo "========================================================================"
@@ -101,16 +83,37 @@ echo "========================================================================"
 echo "MODIFICATIONS STARTED"
 echo "========================================================================"
 
-#1. Pocket Mode
+#1. Neutron Clang
+cd prebuilts/clang/host/linux-x86
+mkdir clang-neutron
+cd clang-neutron
+curl -LO "https://raw.githubusercontent.com/Neutron-Toolchains/antman/main/antman"
+chmod +x antman
+./antman -S=05012024
+./antman --patch=glibc
+cd ../../../../..
+
+#2. Pocket Mode
 sed -i 's/android:minSdkVersion="19"/android:minSdkVersion="21"/' prebuilts/sdk/current/androidx/m2repository/androidx/preference/preference/1.3.0-alpha01/manifest/AndroidManifest.xml
 
-#2. XiaomiVibrator Feature
+#3. XiaomiVibrator Feature
 cd frameworks/native
 git fetch https://github.com/VoidUI-Tiramisu/frameworks_native refs/heads/aosp-13 && git cherry-pick d3b4026058e9d44759860c0b69d35de3f801c4e1
 cd ../..
 
 echo "========================================================================"
 echo "MODIFICATIONS DONE SUCCESSFULLY"
+echo "========================================================================"
+
+#Resync
+echo "========================================================================"
+echo "RESYNCING SOURCE"
+echo "========================================================================"
+
+/opt/crave/resync.sh
+
+echo "========================================================================"
+echo "RESYNCED SOURCE SUCCESSFULLY"
 echo "========================================================================"
 
 #Build
