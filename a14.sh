@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Removing Device Resources (if any)
+#Remove Device Resources (if any)
 echo "========================================================================"
 echo "DELETING DIRECTORIES"
 echo "========================================================================"
@@ -27,6 +27,17 @@ echo "========================================================================"
 echo "ROM REPOSITORY INITIALIZED SUCCESSFULLY"
 echo "========================================================================"
 
+#Resync Source
+echo "========================================================================"
+echo "RESYNCING SOURCE"
+echo "========================================================================"
+
+/opt/crave/resync.sh
+
+echo "========================================================================"
+echo "RESYNCED SOURCE SUCCESSFULLY"
+echo "========================================================================"
+
 #Clone Resources
 echo "========================================================================"
 echo "CLONING BASIC MUNCH RESOURCES"
@@ -34,12 +45,16 @@ echo "========================================================================"
 
 #1. Device Tree
 git clone https://github.com/DeadlyShroud/device_xiaomi_munch.git --depth=1 -b fourteen device/xiaomi/munch
+
 #2. Common Device Tree
 git clone https://github.com/DeadlyShroud/device_xiaomi_sm8250-common.git --depth=1 -b fourteen device/xiaomi/sm8250-common
+
 #3. Vendor Tree
 git clone https://gitea.com/deadlyshroud/vendor_xiaomi_munch.git --depth=1 -b fourteen vendor/xiaomi/munch
+
 #4. Common Vendor Tree
 git clone https://gitea.com/deadlyshroud/vendor_xiaomi_sm8250-common.git --depth=1 -b fourteen vendor/xiaomi/sm8250-common
+
 #5. Kernel Tree
 git clone https://github.com/kvsnr113/xiaomi_sm8250_kernel.git --depth=1 -b main kernel/xiaomi/sm8250
 
@@ -105,18 +120,7 @@ echo "========================================================================"
 echo "MODIFICATIONS DONE SUCCESSFULLY"
 echo "========================================================================"
 
-#Resync
-echo "========================================================================"
-echo "RESYNCING SOURCE"
-echo "========================================================================"
-
-/opt/crave/resync.sh
-
-echo "========================================================================"
-echo "RESYNCED SOURCE SUCCESSFULLY"
-echo "========================================================================"
-
-#Build
+#Build Commands
 echo "========================================================================"
 echo "BUILD STARTING"
 echo "========================================================================"
