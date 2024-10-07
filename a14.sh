@@ -47,7 +47,7 @@ echo "========================================================================"
 git clone https://github.com/DeadlyShroud/device_xiaomi_munch.git --depth=1 -b fourteen device/xiaomi/munch
 
 #2. Common Device Tree
-git clone https://github.com/NewbieNoob1/device_xiaomi_sm8250-common.git --depth=1 -b fourteen device/xiaomi/sm8250-common
+git clone https://github.com/DeadlyShroud/device_xiaomi_sm8250-common.git --depth=1 -b fourteen device/xiaomi/sm8250-common
 
 #3. Vendor Tree
 git clone https://gitea.com/deadlyshroud/vendor_xiaomi_munch.git --depth=1 -b fourteen vendor/xiaomi/munch
@@ -105,6 +105,9 @@ sed -i 's/android:minSdkVersion="19"/android:minSdkVersion="21"/' prebuilts/sdk/
 cd frameworks/native
 git fetch https://github.com/VoidUI-Tiramisu/frameworks_native refs/heads/aosp-13 && git cherry-pick d3b4026058e9d44759860c0b69d35de3f801c4e1
 cd ../..
+
+#4. Neutron clang
+git clone https://gitlab.com/clangsantoni/neutron-clang.git --depth=1 -b 05012024 prebuilts/clang/host/linux-x86/clang-neutron
 
 echo "========================================================================"
 echo "MODIFICATIONS DONE SUCCESSFULLY"
